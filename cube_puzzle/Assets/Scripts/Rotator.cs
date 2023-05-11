@@ -15,22 +15,21 @@ public class Rotator : MonoBehaviour
         target = transform.rotation.eulerAngles;
         timer = gameObject.AddComponent<MonoBehaviourTimer>();
 
-        RotateDegrees(new Vector3(1, 0, 0), 90, 5.0f);
+        RotateDegrees(new Vector3(1, 0, 0), 90, 10.0f);
     }
 
     private void Update()
     {
         if (rotating)
         {
-            timer.StartTimer();
-
-            Vector3 rotation = Vector3.Lerp(origin, target, 1.0f / timer.duration);
-            transform.rotation.eulerAngles.Set(rotation.x, rotation.y, rotation.z);
+            Quaternion rotation = Quaternion.Lerp(Quaternion.Euler(origin), Quaternion.Euler(target), timer.currentTime / timer.duration);
+            transform.localRotation = rotation;
 
             if (timer.isFinished)
             {
                 timer.StopTimer();
                 rotating = false;
+                transform.localRotation = Quaternion.Euler(target);
             }
         }
     }
@@ -44,5 +43,7 @@ public class Rotator : MonoBehaviour
         origin = transform.rotation.eulerAngles;
         target = target + rotation;
         timer.duration = duration;
+
+        timer.StartTimer();
     }
 }
