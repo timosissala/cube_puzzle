@@ -15,7 +15,7 @@ public class Rotator : MonoBehaviour
         target = transform.rotation.eulerAngles;
         timer = gameObject.AddComponent<MonoBehaviourTimer>();
 
-        RotateDegrees(new Vector3(1, 0, 0), 90, 10.0f);
+        //RotateDegrees(new Vector3(1, 0, 0), 90, 10.0f);
     }
 
     private void Update()
