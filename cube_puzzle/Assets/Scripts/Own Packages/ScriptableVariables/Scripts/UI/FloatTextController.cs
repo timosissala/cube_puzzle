@@ -1,4 +1,3 @@
-﻿using MyBox;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +15,7 @@ namespace ScriptableVariables.UI
         [SerializeField]
         private bool inverseText = false;
 
-        [SerializeField, ConditionalField("Inverse Text")]
+        [SerializeField]
         private float maxValue;
 
         private void Awake()
