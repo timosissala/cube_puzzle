@@ -41,7 +41,7 @@ public class Rotator : MonoBehaviour
         Vector3 rotation = direction * degrees;
 
         origin = transform.rotation.eulerAngles;
-        target = target + rotation;
+        target = origin + rotation;
         timer.duration = duration;
 
         timer.StartTimer();
